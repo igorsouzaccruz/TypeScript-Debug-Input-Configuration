@@ -1,9 +1,9 @@
 # TypeScript-Debug-Input-Configuration
-All steps to install TypeScript with debug and a prompt-sync for a input values.
+<h1> All steps to install TypeScript with debug and a prompt-sync for a input values. </h1>
 
 - criar pasta, entrar nela e abri um terminal
-    - executar o npm i typescript@4.7.4 ts-node@10.9.1 prompt-sync@4.2.0 @types/prompt-sync@4.1.1 --save
-    - executar o npm i -g npx (se ainda não existir)
+  * executar o npm i typescript@4.7.4 ts-node@10.9.1 prompt-sync@4.2.0 @types/prompt-sync@4.1.1 --save
+  * executar o npm i -g npx (se ainda não existir)
 - Criar o arquivo tsconfig.json    com esse conteudo abaixo
 {
   "compilerOptions": {
@@ -33,7 +33,7 @@ dependencias:
 {
     // Use o IntelliSense para saber mais sobre os atributos possíveis.
     // Focalizar para exibir as descrições dos atributos existentes.
-    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    // Para obter mais informações, acesse: <https://go.microsoft.com/fwlink/?linkid=830387>
     "version": "0.2.0",
     "configurations": [
         {
