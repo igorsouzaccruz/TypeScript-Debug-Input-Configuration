@@ -15,11 +15,11 @@ export class QuestaoUm implements IQuestao{
     // PROCESSAMENTO DO DADO
 
     mostrarSaidaDeDados(): void {
-        console.clear();
-        console.log('------------ SAIDA DE DADOS ------------');
+        console.log('------------ QUESTÃO 1  ------------');
         const parOuImpar: string = this.isPar() ? "par" : "impar";
         const positivoOuNegativo: string = this.isPositive() ? "positivo" : "negativo";
         console.log(`O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}` )
-        console.log('------------ ##### ## ##### ------------');
+        console.log('------------      FIM       ------------');
+        console.log();
     }
 }
