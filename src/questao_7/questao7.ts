@@ -6,7 +6,6 @@ const prompter = PromptSync();
 
 export class QuestaoSete implements IQuestao {
 
-    // private candidatos:Array<Candidato> = [new Candidato(1, 'Igor'), new Candidato(2, 'kaike'), new Candidato(3, 'Emanuel')];
     private votosInvalidos: number = 0;
 
     constructor(private quantidadeVotanten: number, private candidatos:Array<Candidato>) {}
