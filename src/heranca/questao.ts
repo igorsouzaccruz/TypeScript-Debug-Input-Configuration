@@ -1,10 +1,11 @@
 import PromptSync from 'prompt-sync'
 import { IQuestao } from '../interface/iquestao';
 export abstract class Questao {
-    public prompter = PromptSync();
+    //Comando para entrada de dados
+    private prompt = PromptSync();
+
     public foiRespondida: boolean;
     public resposta: string;
-    public resultados: Array<string> = [];
 
     constructor(private _numeroQuestao: string) {
 
@@ -13,16 +14,12 @@ export abstract class Questao {
     get numeroQuestao(): string {
         return `- QUESTÃO ${this._numeroQuestao}`
     }
-    
 
-    saidaDosDados() {
-        console.log(this.numeroQuestao);
-        if (this.foiRespondida) {
-            this.resultados.forEach(resultado => {
-                console.log(resultado);    
-            });
-            return;
-        }
-        console.log(' Não respondida!!!');
+    public leia(): string {
+        return this.prompt('');
+    }
+
+    public escreval(texto:string) {
+        console.log(texto);
     }
 }

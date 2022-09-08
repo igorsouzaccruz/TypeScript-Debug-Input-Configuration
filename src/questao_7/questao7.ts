@@ -11,20 +11,21 @@ export class QuestaoSete extends Questao implements IAlgoritimo {
 
     private votos:Array<Number>;
 
+    // Saida do DADO 
+    private resultados:Array<String> = [];
+
     foiRespondida: boolean = false;
 
     constructor() {
         super('07');
-        // this.entradaDeDados();
-        // this.processamentoDosDados();
     }
 
     entradaDeDados(): void {
         console.log();
         console.log(this.numeroQuestao);
         do {
-            console.log(' Informe número de votantes? ou digite S para sair da questão')
-            this.resposta = this.prompter('');
+            this.escreval(' Informe número de votantes? ou digite S para sair da questão');
+            this.resposta = this.leia();
             if (this.resposta.toUpperCase() == 'S') {
                 break;
             }
@@ -40,7 +41,7 @@ export class QuestaoSete extends Questao implements IAlgoritimo {
             for (let index = 0; index < this.quantidadeVotantes; index++) {
                 console.log()
                 console.log(mensagemParaPedirVoto)
-                const voto: number = Number(this.prompter(''));
+                const voto: number = Number(this.leia());
                 this.addVoto(voto);
             }
         }
@@ -52,6 +53,17 @@ export class QuestaoSete extends Questao implements IAlgoritimo {
             });
             this.resultados.push(` Votos anulados: ${this.votosInvalidos} voto(s)`);
         }
+    }
+
+    saidaDosDados() {
+        console.log(this.numeroQuestao);
+        if (this.foiRespondida) {
+            this.resultados.forEach(resultado => {
+                console.log(resultado);    
+            });
+            return;
+        }
+        console.log(' Não respondida!!!');
     }
 
     private mensagemParaPedirVoto(): string {

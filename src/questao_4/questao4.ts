@@ -5,11 +5,11 @@ import { IAlgoritimo } from '../interface/algoritimo';
 export class QuestaoQuatro extends Questao implements IAlgoritimo{
 
     private somaDosNumerosDe1A100: number = 0;
+    // Saida do DADO  ---> Resultado
+    public resultados: string;
 
     constructor() {
         super('04');
-        // this.entradaDeDados();
-        // this.processamentoDosDados();
     }
 
     entradaDeDados(): void {
@@ -24,6 +24,15 @@ export class QuestaoQuatro extends Questao implements IAlgoritimo{
             const numeroNoLaco = index + 1 ;
             this.somaDosNumerosDe1A100 += numeroNoLaco;
         }
-        this.resultados.push(` A soma dos numero inteiros de 1 a 100 é ${this.somaDosNumerosDe1A100}`);
+        this.resultados = ` A soma dos numero inteiros de 1 a 100 é ${this.somaDosNumerosDe1A100}`;
+    }
+
+    saidaDosDados() {
+        console.log(this.numeroQuestao);
+        if (this.foiRespondida) {
+            console.log(this.resultados);
+            return;
+        }
+        console.log(' Não respondida!!!');
     }
 }

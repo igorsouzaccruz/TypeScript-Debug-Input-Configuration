@@ -6,17 +6,18 @@ export class QuestaoUm extends Questao implements IAlgoritimo {
 
     private numero: number;
 
+    // Saida do DADO  ---> Resultado
+    public resultados: string;
+
     constructor() {
         super('01');
-        // this.entradaDeDados();
-        // this.processamentoDosDados();
     }
 
     entradaDeDados(): void {
-        console.log('- QUESTÃO 01');
+        this.escreval(this.numeroQuestao)
         do {
-            console.log(' Informe um numero inteiro ou digite S para sair da questão')
-            this.resposta = this.prompter('');
+            this.escreval(' Informe um numero inteiro ou digite S para sair da questão')
+            this.resposta = this.leia();
             if (this.resposta.toUpperCase() == 'S') {
                 break;
             }
@@ -31,8 +32,17 @@ export class QuestaoUm extends Questao implements IAlgoritimo {
         if (this.foiRespondida){
             const parOuImpar: string = this.isPar() ? "par" : "impar";
             const positivoOuNegativo: string = this.isPositive() ? "positivo" : "negativo";
-            this.resultados.push(` O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}`);
+            this.resultados = ` O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}`;
         }
+    }
+
+    saidaDosDados() {
+        console.log(this.numeroQuestao);
+        if (this.foiRespondida) {
+            console.log(this.resultados);
+            return;
+        }
+        console.log(' Não respondida!!!');
     }
    
     private isPar(): boolean {
