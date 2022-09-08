@@ -8,11 +8,22 @@ export class QuestaoSete implements IQuestao {
 
     private votosInvalidos: number = 0;
 
-    constructor(private quantidadeVotanten: number, private candidatos:Array<Candidato>) {}
+    constructor(private quantidadeVotantes: number, private candidatos:Array<Candidato>) {
+        this.realizarVotacao();
+    }
 
-    public realizarVotacao() {
+    // SAIDA DE DADOS
+    public mostrarResultado(): void {
+        console.log('- QUESTÃO 07');
+        this.candidatos.forEach(candidato => {
+            console.log(`O Candidato ${candidato.nome} recebeu ${candidato.votos} voto(s)`);    
+        });
+        console.log(`Votos anulados: ${this.votosInvalidos} voto(s)`);
+    }
+
+    private realizarVotacao() {
        const mensagemParaPedirVoto: string = this.mensagemParaPedirVoto();
-        for (let index = 0; index < this.quantidadeVotanten; index++) {
+        for (let index = 0; index < this.quantidadeVotantes; index++) {
             console.log()
             console.log(mensagemParaPedirVoto)
             const voto: number = Number(prompter(''));
@@ -26,16 +37,6 @@ export class QuestaoSete implements IQuestao {
         const opcoesDeVotos = this.candidatos.map(candidato => candidato.id).join(', ').replace(ultimaVirgulaEncontrada, trocarPorOu)
         return `Deseja votar em quem? Lembrando números (${opcoesDeVotos})`;
     }
-
-    public mostrarSaidaDeDados(): void {
-        console.log('------------ QUESTÃO 7 ------------');
-        this.candidatos.forEach(candidato => {
-            console.log(`O Candidato ${candidato.nome} recebeu ${candidato.votos} voto(s)`);    
-        });
-        console.log(`Votos anulados: ${this.votosInvalidos} voto(s)`);
-        console.log('------------      FIM       ------------');
-    }
-
 
     private addVoto(voto: number): void  {
         const foiInvalidado = this.votoInvalido(voto)

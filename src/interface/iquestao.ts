@@ -1,3 +1,3 @@
 export interface IQuestao {
-    mostrarSaidaDeDados(): void
+    mostrarResultado(): void
 }
