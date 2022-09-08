@@ -20,6 +20,5 @@ export class QuestaoUm implements IQuestao{
         const positivoOuNegativo: string = this.isPositive() ? "positivo" : "negativo";
         console.log(`O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}` )
         console.log('------------      FIM       ------------');
-        console.log();
     }
 }

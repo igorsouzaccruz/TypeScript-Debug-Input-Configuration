@@ -21,6 +21,5 @@ export class QuestaoQuatro implements IQuestao{
         console.log('------------ QUESTÃO 4 ------------');
         console.log(`A soma dos numero inteiros de 1 a 100 é ${this.somaDosNumerosDe1A100}` )
         console.log('------------      FIM       ------------');
-        console.log();
     }
 }
