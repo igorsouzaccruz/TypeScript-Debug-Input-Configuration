@@ -1,19 +1,40 @@
+import { Questao } from "../heranca/questao";
+import { IAlgoritimo } from "../interface/algoritimo";
 import { IQuestao } from "../interface/iquestao";
 
-export class QuestaoUm implements IQuestao {
+export class QuestaoUm extends Questao implements IAlgoritimo {
 
-    //ENTRADA DO DADO
-    constructor(private numero: number) { }
+    private numero: number;
 
-    // SAIDA DE DADOS
-    public mostrarResultado(): void {
-        console.log('- QUESTÃO 01');
-        const parOuImpar: string = this.isPar() ? "par" : "impar";
-        const positivoOuNegativo: string = this.isPositive() ? "positivo" : "negativo";
-        console.log(`O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}`);
+    constructor() {
+        super('01');
+        // this.entradaDeDados();
+        // this.processamentoDosDados();
     }
 
-    // PROCESSAMENTO DO DADO
+    entradaDeDados(): void {
+        console.log('- QUESTÃO 01');
+        do {
+            console.log(' Informe um numero inteiro ou digite S para sair da questão')
+            this.resposta = this.prompter('');
+            if (this.resposta.toUpperCase() == 'S') {
+                break;
+            }
+        } while (this.resposta === '' || !Number.isInteger(Number(this.resposta)));
+
+        if (Number.isInteger(Number(this.resposta))){
+            this.numero = Number(this.resposta);
+            this.foiRespondida = true;
+        }
+    }
+    processamentoDosDados() {
+        if (this.foiRespondida){
+            const parOuImpar: string = this.isPar() ? "par" : "impar";
+            const positivoOuNegativo: string = this.isPositive() ? "positivo" : "negativo";
+            this.resultados.push(` O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}`);
+        }
+    }
+   
     private isPar(): boolean {
         return (this.numero % 2) === 0;
     }
@@ -21,5 +42,4 @@ export class QuestaoUm implements IQuestao {
     private isPositive(): boolean {
         return this.numero >= 0;
     }
-
 }

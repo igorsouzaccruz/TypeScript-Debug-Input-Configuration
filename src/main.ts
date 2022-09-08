@@ -1,74 +1,45 @@
-import PromptSync from 'prompt-sync'
 import { QuestaoUm } from './questao_1/questao1';
 import { QuestaoQuatro } from './questao_4/questao4';
 import { QuestaoSete } from './questao_7/questao7';
-import { Candidato } from './questao_7/candidato';
-import { IQuestao } from './interface/iquestao';
-const prompter = PromptSync();
+import { IAlgoritimo } from './interface/algoritimo';
 
-const resultadosQuestoes: Array<IQuestao> = [];
+const questoes: Array<IAlgoritimo> = [new QuestaoUm(), new QuestaoQuatro(), new QuestaoSete()]
 
-const questao1 = () => {
-    console.log('- QUESTÃO 01');
-    let resposta: string;
-    do {
-        console.log(' Informe um numero inteiro ou digite S para sair da questão')
-        resposta = prompter('');
-        if (resposta.toUpperCase() == 'S') {
-            break;
-        }
-    } while (resposta === '' || !Number.isInteger(Number(resposta)));
-
-    //TODO melhorar o nome desse booleano
-    if (Number.isInteger(Number(resposta))){
-        resultadosQuestoes.push(new QuestaoUm(Number(resposta)))
-    }
-}
-
-const questao4 = () => {
-    console.log();    
-    console.log('- QUESTÃO 04');
-    console.log(' Não necessita de entrada de dados.');
-    console.log(' Deve calcular a soma dos inteiros dos numeros de 1 a 100');
-    resultadosQuestoes.push(new QuestaoQuatro())
-}
-
-const questao7 = () => {
-    console.log();
-    console.log('- QUESTÃO 07');
-    let resposta: string;
-    
-    do {
-        console.log(' Informe número de votantes? ou digite S para sair da questão')
-        resposta = prompter('');
-        if (resposta.toUpperCase() == 'S') {
-            break;
-        }
-    } while (resposta === '' || !Number.isInteger(Number(resposta)) || Number(resposta) <= 0);
-
-    //TODO melhorar o nome desse booleano
-    if (Number.isInteger(Number(resposta)) && Number(resposta) > 0) {
-        const candidatos:Array<Candidato> = [new Candidato(1, 'Igor'), new Candidato(2, 'kaike'), new Candidato(3, 'Emanuel'), new Candidato(4,'Blibli')]
-        const  questao7 = new QuestaoSete(Number(resposta), candidatos);
-        resultadosQuestoes.push(questao7);
-    }
-};
-
-const saidaDeDadosDasQuestoes = () => {
-    console.log();
-    console.log();
-    console.log('--------------- RESULTADOS ---------------');
+const questoes_entradaDeDados = () => {
+    console.log('------------------ ENTRADA DE DADOS ------------------');
         
-    resultadosQuestoes.forEach(questao => {
-        console.log();
-        questao.mostrarResultado();
+    questoes.forEach(questao => {
+        questao.entradaDeDados();
     });
     console.log();
-    console.log('------------------------------------------');
 };
-console.log('--------------- QUESTÕES ---------------');
-questao1();
-questao4();
-questao7();
 
-saidaDeDadosDasQuestoes();
+const questoes_processamentoDosDados = () => {
+    console.log('---------------- PROCESSANDO OS DADOS ----------------');
+        
+    questoes.forEach(questao => {
+        questao.processamentoDosDados();
+    });
+    const cincoSegundosAFrente = new Date();
+    cincoSegundosAFrente.setSeconds((cincoSegundosAFrente.getSeconds() + 1))
+    console.log(' Carregando...');
+    while (cincoSegundosAFrente > new Date()) { }
+    console.log(' Dados processados!!!');
+    
+};
+
+const questoes_saidaDeDados = () => {
+    console.log('--------------------- RESULTADOS ---------------------');
+        
+    questoes.forEach(questao => {
+        console.log();
+        questao.saidaDosDados();
+    });
+    console.log('------------------------------------------------------');
+};
+
+questoes_entradaDeDados()
+console.log();
+questoes_processamentoDosDados()
+console.log();
+questoes_saidaDeDados();

@@ -1,33 +1,56 @@
-import PromptSync from 'prompt-sync'
-import { IQuestao } from "../interface/iquestao";
 import { Candidato } from './candidato';
+import { Questao } from '../heranca/questao';
+import { IAlgoritimo } from "../interface/algoritimo";
 
-const prompter = PromptSync();
-
-export class QuestaoSete implements IQuestao {
+export class QuestaoSete extends Questao implements IAlgoritimo {
 
     private votosInvalidos: number = 0;
 
-    constructor(private quantidadeVotantes: number, private candidatos:Array<Candidato>) {
-        this.realizarVotacao();
+    private quantidadeVotantes: number;
+    private candidatos:Array<Candidato>;
+
+    private votos:Array<Number>;
+
+    foiRespondida: boolean = false;
+
+    constructor() {
+        super('07');
+        // this.entradaDeDados();
+        // this.processamentoDosDados();
     }
 
-    // SAIDA DE DADOS
-    public mostrarResultado(): void {
-        console.log('- QUESTÃO 07');
-        this.candidatos.forEach(candidato => {
-            console.log(`O Candidato ${candidato.nome} recebeu ${candidato.votos} voto(s)`);    
-        });
-        console.log(`Votos anulados: ${this.votosInvalidos} voto(s)`);
-    }
+    entradaDeDados(): void {
+        console.log();
+        console.log(this.numeroQuestao);
+        do {
+            console.log(' Informe número de votantes? ou digite S para sair da questão')
+            this.resposta = this.prompter('');
+            if (this.resposta.toUpperCase() == 'S') {
+                break;
+            }
+        } while (this.resposta === '' || !Number.isInteger(Number(this.resposta)) || Number(this.resposta) <= 0);
 
-    private realizarVotacao() {
-       const mensagemParaPedirVoto: string = this.mensagemParaPedirVoto();
-        for (let index = 0; index < this.quantidadeVotantes; index++) {
-            console.log()
-            console.log(mensagemParaPedirVoto)
-            const voto: number = Number(prompter(''));
-            this.addVoto(voto);
+         //TODO melhorar o nome desse booleano
+        if (Number.isInteger(Number(this.resposta)) && Number(this.resposta) > 0) {
+            this.quantidadeVotantes = Number(this.resposta);
+            this.candidatos =  [new Candidato(1, 'Igor'), new Candidato(2, 'kaike'), new Candidato(3, 'Emanuel')]
+            this.foiRespondida = true;
+
+            const mensagemParaPedirVoto: string = this.mensagemParaPedirVoto();
+            for (let index = 0; index < this.quantidadeVotantes; index++) {
+                console.log()
+                console.log(mensagemParaPedirVoto)
+                const voto: number = Number(this.prompter(''));
+                this.addVoto(voto);
+            }
+        }
+    }
+    processamentoDosDados() {
+        if (this.foiRespondida) {
+            this.candidatos.forEach(candidato => {
+                this.resultados.push(` O Candidato ${candidato.nome} recebeu ${candidato.votos} voto(s)`);    
+            });
+            this.resultados.push(` Votos anulados: ${this.votosInvalidos} voto(s)`);
         }
     }
 
