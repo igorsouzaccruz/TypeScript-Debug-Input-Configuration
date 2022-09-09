@@ -6,6 +6,7 @@ import { Candidato } from './questao_7/candidato';
 import { IQuestao } from './interface/iquestao';
 import { QuestaoSeis } from './questao_6/questao6';
 import { QuestaoNove } from './questao_9/questao9';
+import { QuestaoDoze } from './questao_12/questao12';
 const prompter = PromptSync();
 
 const resultadosQuestoes: Array<IQuestao> = [];
@@ -80,6 +81,14 @@ const questao9 = () => {
     resultadosQuestoes.push(new QuestaoNove)
 }
 
+const questao12 = () => {
+    console.log();    
+    console.log('- QUESTÃO 12');
+    console.log(' Não necessita de entrada de dados.');
+    console.log(` Realiza a soma: 37x38/1 + 36x37/2 + 35x36/3 + ... + 1x2/37` );
+    resultadosQuestoes.push(new QuestaoDoze)
+}
+
 const saidaDeDadosDasQuestoes = () => {
     console.log();
     console.log();
@@ -97,6 +106,7 @@ console.log('--------------- QUESTÕES ---------------');
 // questao4();
 // questao6();
 // questao7();
-questao9();
+// questao9();
+questao12();
 
 saidaDeDadosDasQuestoes();
