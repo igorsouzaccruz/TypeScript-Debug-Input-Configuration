@@ -11,7 +11,7 @@
 
 # Criando os algoritimos.
 
-- Dentro da pasta src de **src** crie uma pasta como o _nome do arquivo_
+- Dentro da pasta **src** crie uma pasta como o _nome do arquivo_
   ```
     mkdir src/[nome_da_pasta]
   ```
@@ -42,6 +42,7 @@
 # Para executar/debugar.
 
 - abra o arquivo main.ts localizado na raiz do seu projeto. O modelo **cru** deve estar como abaixo:
+
   ```js
   import { GerenciadorDeAlgoritimo } from './gerenciador_de_algoritimo';
   import { IAlgoritimo } from './interface/algoritimo';
@@ -53,8 +54,11 @@
 
   gerenciadorDosAlgoritimos.executar();
   ```
+
 - para cada _novo algoritimo criado_ adicione-o no Array de algoritimos. Exemplo abaixo:
+
   - const algoritimos: Array<IAlgoritimo> = [**new NomeArquivoCriado(), new Nome2ArquivoCriado(), new Nome3ArquivoCriado()**];
+
   ```js
   import { GerenciadorDeAlgoritimo } from './gerenciador_de_algoritimo';
   import { IAlgoritimo } from './interface/algoritimo';
@@ -70,4 +74,5 @@
 
   gerenciadorDosAlgoritimos.executar();
   ```
+
 - E com o arquivo **main.ts** aberto execute o f5 no vsCode.
