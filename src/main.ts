@@ -5,6 +5,7 @@ import { QuestaoSete } from './questao_7/questao7';
 import { Candidato } from './questao_7/candidato';
 import { IQuestao } from './interface/iquestao';
 import { QuestaoSeis } from './questao_6/questao6';
+import { QuestaoNove } from './questao_9/questao9';
 const prompter = PromptSync();
 
 const resultadosQuestoes: Array<IQuestao> = [];
@@ -65,11 +66,19 @@ const questao7 = () => {
 
     //TODO melhorar o nome desse booleano
     if (Number.isInteger(Number(resposta))) {
-        const candidatos:Array<Candidato> = [new Candidato(1, 'Igor'), new Candidato(2, 'kaike'), new Candidato(3, 'Emanuel'), new Candidato(4,'Blibli')]
+        const candidatos:Array<Candidato> = [new Candidato(1, 'Igor'), new Candidato(2, 'kaike'), new Candidato(3, 'Emanuel')]
         const  questao7 = new QuestaoSete(Number(resposta), candidatos);
         resultadosQuestoes.push(questao7);
     }
-};
+}
+
+const questao9 = () => {
+    console.log();    
+    console.log('- QUESTÃO 09');
+    console.log(' Não necessita de entrada de dados.');
+    console.log(' Deve calcular a soma dos 50 primeiros termos da seguinte série: 1000/1 - 997/2 + 994/3 - 991/4 + ...');
+    resultadosQuestoes.push(new QuestaoNove)
+}
 
 const saidaDeDadosDasQuestoes = () => {
     console.log();
@@ -86,7 +95,8 @@ const saidaDeDadosDasQuestoes = () => {
 console.log('--------------- QUESTÕES ---------------');
 // questao1();
 // questao4();
-questao6();
+// questao6();
 // questao7();
+questao9();
 
 saidaDeDadosDasQuestoes();
