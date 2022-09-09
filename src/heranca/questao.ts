@@ -1,25 +1,22 @@
-import PromptSync from 'prompt-sync'
-import { IQuestao } from '../interface/iquestao';
+import PromptSync from "prompt-sync";
 export abstract class Questao {
-    //Comando para entrada de dados
-    private prompt = PromptSync();
+  //Comando para entrada de dados
+  private prompt = PromptSync();
 
-    public foiRespondida: boolean;
-    public resposta: string;
+  public foiRespondida: boolean;
+  public resposta: string;
 
-    constructor(private _numeroQuestao: string) {
+  constructor(private _numeroQuestao: string) {}
 
-    }
+  get numeroQuestao(): string {
+    return `- QUESTÃO ${this._numeroQuestao}`;
+  }
 
-    get numeroQuestao(): string {
-        return `- QUESTÃO ${this._numeroQuestao}`
-    }
+  public leia(): string {
+    return this.prompt("");
+  }
 
-    public leia(): string {
-        return this.prompt('');
-    }
-
-    public escreval(texto:string) {
-        console.log(texto);
-    }
+  public escreval(texto: string) {
+    console.log(texto);
+  }
 }
