@@ -5,7 +5,7 @@
 const calculaTemperatura = (fahrenheit : number) : void => {
   let celsius : number = (5 * (fahrenheit - 32) / 9)
 
-  console.log("Temperatura em Fanrenheit: "+ fahrenheit + "°F");
+  console.log("Temperatura em Fahrenheit: "+ fahrenheit + "°F");
   console.log("Temperatura em Celsius: " + celsius.toFixed(2) + "°C");
   
 }
