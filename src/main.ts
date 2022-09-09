@@ -4,6 +4,7 @@ import { QuestaoQuatro } from './questao_4/questao4';
 import { QuestaoSete } from './questao_7/questao7';
 import { Candidato } from './questao_7/candidato';
 import { IQuestao } from './interface/iquestao';
+import { QuestaoSeis } from './questao_6/questao6';
 const prompter = PromptSync();
 
 const resultadosQuestoes: Array<IQuestao> = [];
@@ -33,6 +34,22 @@ const questao4 = () => {
     resultadosQuestoes.push(new QuestaoQuatro())
 }
 
+const questao6 = () => {
+    console.log('- QUESTÃO 06');
+    let resposta: string;
+    do {
+        console.log(' Informe a temperatura que em Fahrenheit(°F) que será convertida em Celsius(°C): ')
+        resposta = prompter('');
+        if (resposta.toUpperCase() == 'S') {
+            break;
+        }
+    } while (resposta === '' || !Number.isFinite(Number(resposta)) || Number(resposta) <= -459.67);
+
+    if (Number.isFinite(Number(resposta)) && Number(resposta) >= -459.67){
+        resultadosQuestoes.push(new QuestaoSeis(Number(resposta)))
+    }
+}
+
 const questao7 = () => {
     console.log();
     console.log('- QUESTÃO 07');
@@ -47,7 +64,7 @@ const questao7 = () => {
     } while (resposta === '' || !Number.isInteger(Number(resposta)) || Number(resposta) <= 0);
 
     //TODO melhorar o nome desse booleano
-    if (Number.isInteger(Number(resposta)) && Number(resposta) > 0) {
+    if (Number.isInteger(Number(resposta))) {
         const candidatos:Array<Candidato> = [new Candidato(1, 'Igor'), new Candidato(2, 'kaike'), new Candidato(3, 'Emanuel'), new Candidato(4,'Blibli')]
         const  questao7 = new QuestaoSete(Number(resposta), candidatos);
         resultadosQuestoes.push(questao7);
@@ -67,8 +84,9 @@ const saidaDeDadosDasQuestoes = () => {
     console.log('------------------------------------------');
 };
 console.log('--------------- QUESTÕES ---------------');
-questao1();
-questao4();
-questao7();
+// questao1();
+// questao4();
+questao6();
+// questao7();
 
 saidaDeDadosDasQuestoes();
