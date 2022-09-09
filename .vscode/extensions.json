@@ -12,6 +12,7 @@
     "formulahendry.auto-close-tag",
     "EditorConfig.EditorConfig",
     "steoates.autoimport",
-    "quicktype.quicktype"
+    "quicktype.quicktype",
+    "vscode-icons-team.vscode-icons"
   ]
 }

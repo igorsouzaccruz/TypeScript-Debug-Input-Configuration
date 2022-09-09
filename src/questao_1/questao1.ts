@@ -1,5 +1,5 @@
-import { Questao } from "../heranca/questao";
-import { IAlgoritimo } from "../interface/algoritimo";
+import { Questao } from '../heranca/questao';
+import { IAlgoritimo } from '../interface/algoritimo';
 
 export class QuestaoUm extends Questao implements IAlgoritimo {
   private numero: number;
@@ -8,20 +8,20 @@ export class QuestaoUm extends Questao implements IAlgoritimo {
   public resultados: string;
 
   constructor() {
-    super("01");
+    super('01');
   }
 
   entradaDeDados(): void {
     this.escreval(this.numeroQuestao);
     do {
       this.escreval(
-        " Informe um numero inteiro ou digite S para sair da questão"
+        ' Informe um numero inteiro ou digite S para sair da questão'
       );
       this.resposta = this.leia();
-      if (this.resposta.toUpperCase() == "S") {
+      if (this.resposta.toUpperCase() == 'S') {
         break;
       }
-    } while (this.resposta === "" || !Number.isInteger(Number(this.resposta)));
+    } while (this.resposta === '' || !Number.isInteger(Number(this.resposta)));
 
     if (Number.isInteger(Number(this.resposta))) {
       this.numero = Number(this.resposta);
@@ -30,10 +30,10 @@ export class QuestaoUm extends Questao implements IAlgoritimo {
   }
   processamentoDosDados() {
     if (this.foiRespondida) {
-      const parOuImpar: string = this.isPar() ? "par" : "impar";
+      const parOuImpar: string = this.isPar() ? 'par' : 'impar';
       const positivoOuNegativo: string = this.isPositive()
-        ? "positivo"
-        : "negativo";
+        ? 'positivo'
+        : 'negativo';
       this.resultados = ` O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}`;
     }
   }
@@ -41,10 +41,10 @@ export class QuestaoUm extends Questao implements IAlgoritimo {
   saidaDosDados() {
     console.log(this.numeroQuestao);
     if (this.foiRespondida) {
-      console.log(this.resultados);
+      this.escreval(this.resultados);
       return;
     }
-    console.log(" Não respondida!!!");
+    this.escreval(' Não respondida!!!');
   }
 
   private isPar(): boolean {

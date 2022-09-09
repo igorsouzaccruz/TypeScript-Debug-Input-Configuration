@@ -1,5 +1,5 @@
-import { Questao } from "../heranca/questao";
-import { IAlgoritimo } from "../interface/algoritimo";
+import { Questao } from '../heranca/questao';
+import { IAlgoritimo } from '../interface/algoritimo';
 
 export class QuestaoQuatro extends Questao implements IAlgoritimo {
   private somaDosNumerosDe1A100: number = 0;
@@ -7,14 +7,14 @@ export class QuestaoQuatro extends Questao implements IAlgoritimo {
   public resultados: string;
 
   constructor() {
-    super("04");
+    super('04');
   }
 
   entradaDeDados(): void {
-    console.log();
-    console.log("- QUESTÃO 04");
-    console.log(" Não necessita de entrada de dados.");
-    console.log(" Deve calcular a soma dos inteiros dos numeros de 1 a 100");
+    this.escreval('');
+    this.escreval('- QUESTÃO 04');
+    this.escreval(' Não necessita de entrada de dados.');
+    this.escreval(' Deve calcular a soma dos inteiros dos numeros de 1 a 100');
     this.foiRespondida = true;
   }
   processamentoDosDados() {
@@ -31,6 +31,6 @@ export class QuestaoQuatro extends Questao implements IAlgoritimo {
       console.log(this.resultados);
       return;
     }
-    console.log(" Não respondida!!!");
+    this.escreval('  Não respondida!!!');
   }
 }

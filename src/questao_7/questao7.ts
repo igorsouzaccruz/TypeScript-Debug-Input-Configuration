@@ -1,6 +1,6 @@
-import { Questao } from "../heranca/questao";
-import { IAlgoritimo } from "../interface/algoritimo";
-import { Candidato } from "./candidato";
+import { Questao } from '../heranca/questao';
+import { IAlgoritimo } from '../interface/algoritimo';
+import { Candidato } from './candidato';
 
 export class QuestaoSete extends Questao implements IAlgoritimo {
   private votosInvalidos: number = 0;
@@ -11,12 +11,12 @@ export class QuestaoSete extends Questao implements IAlgoritimo {
   private votos: Array<Number>;
 
   // Saida do DADO
-  private resultados: Array<String> = [];
+  private resultados: Array<string> = [];
 
   foiRespondida: boolean = false;
 
   constructor() {
-    super("07");
+    super('07');
   }
 
   entradaDeDados(): void {
@@ -24,14 +24,14 @@ export class QuestaoSete extends Questao implements IAlgoritimo {
     console.log(this.numeroQuestao);
     do {
       this.escreval(
-        " Informe número de votantes? ou digite S para sair da questão"
+        ' Informe número de votantes? ou digite S para sair da questão'
       );
       this.resposta = this.leia();
-      if (this.resposta.toUpperCase() == "S") {
+      if (this.resposta.toUpperCase() == 'S') {
         break;
       }
     } while (
-      this.resposta === "" ||
+      this.resposta === '' ||
       !Number.isInteger(Number(this.resposta)) ||
       Number(this.resposta) <= 0
     );
@@ -40,16 +40,16 @@ export class QuestaoSete extends Questao implements IAlgoritimo {
     if (Number.isInteger(Number(this.resposta)) && Number(this.resposta) > 0) {
       this.quantidadeVotantes = Number(this.resposta);
       this.candidatos = [
-        new Candidato(1, "Igor"),
-        new Candidato(2, "kaike"),
-        new Candidato(3, "Emanuel"),
+        new Candidato(1, 'Igor'),
+        new Candidato(2, 'kaike'),
+        new Candidato(3, 'Emanuel'),
       ];
       this.foiRespondida = true;
 
       const mensagemParaPedirVoto: string = this.mensagemParaPedirVoto();
       for (let index = 0; index < this.quantidadeVotantes; index++) {
-        console.log();
-        console.log(mensagemParaPedirVoto);
+        this.escreval('');
+        this.escreval(mensagemParaPedirVoto);
         const voto: number = Number(this.leia());
         this.addVoto(voto);
       }
@@ -70,19 +70,19 @@ export class QuestaoSete extends Questao implements IAlgoritimo {
     console.log(this.numeroQuestao);
     if (this.foiRespondida) {
       this.resultados.forEach((resultado) => {
-        console.log(resultado);
+        this.escreval(resultado);
       });
       return;
     }
-    console.log(" Não respondida!!!");
+    this.escreval(' Não respondida!!!');
   }
 
   private mensagemParaPedirVoto(): string {
-    const ultimaVirgulaEncontrada = new RegExp(", " + "([^" + "," + "]*)$");
-    const trocarPorOu = " ou " + "$1"; //$1 representa a string depois da ULTIMA virgula encontrada
+    const ultimaVirgulaEncontrada = new RegExp(', ' + '([^' + ',' + ']*)$');
+    const trocarPorOu = ' ou ' + '$1'; //$1 representa a string depois da ULTIMA virgula encontrada
     const opcoesDeVotos = this.candidatos
       .map((candidato) => candidato.id)
-      .join(", ")
+      .join(', ')
       .replace(ultimaVirgulaEncontrada, trocarPorOu);
     return `Deseja votar em quem? Lembrando números (${opcoesDeVotos})`;
   }
