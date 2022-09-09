@@ -1,5 +1,5 @@
 import PromptSync from 'prompt-sync'
-import { IQuestao } from '../interface/iquestao';
+
 export abstract class Questao {
     //Comando para entrada de dados
     private prompt = PromptSync();

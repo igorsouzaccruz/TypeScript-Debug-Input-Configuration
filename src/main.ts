@@ -1,8 +1,9 @@
 import { QuestaoUm } from './questao_1/questao1';
 import { IAlgoritimo } from './interface/algoritimo';
 import { QuestaoSete } from './questao_7/questao7';
+import { QuestaoDois } from './questao_2/questao2';
 
-const questoes: Array<IAlgoritimo> = [new QuestaoUm(), new QuestaoSete()]
+const questoes: Array<IAlgoritimo> = [new QuestaoDois()]
 
 const questoes_entradaDeDados = () => {
     console.log('------------------ ENTRADA DE DADOS ------------------');
