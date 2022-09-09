@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "loiane.ts-extension-pack",
+    "rbbit.typescript-hero",
+    "vscode-icons-team.vscode-icons",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode"
+  ]
+}
