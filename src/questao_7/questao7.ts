@@ -114,3 +114,15 @@ export class QuestaoSete extends Questao implements IAlgoritimo {
     return false;
   }
 }
+
+export class NomeArquivo implements IAlgoritimo {
+  entradaDeDados(): void {
+    throw new Error('Method not implemented.');
+  }
+  processamentoDosDados() {
+    throw new Error('Method not implemented.');
+  }
+  saidaDosDados() {
+    throw new Error('Method not implemented.');
+  }
+}
