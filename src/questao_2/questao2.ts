@@ -14,6 +14,7 @@ export class QuestaoDois implements IAlgoritimo {
   numeroDeNota: number[] = [this.nota1, this.nota2, this.nota3];
 
   constructor() {}
+
   titulo(): string {
     return 'QUESTÃO 2';
   }
