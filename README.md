@@ -11,6 +11,21 @@
 
 # Criando os algoritimos.
 
+- Comandos para entrada e saide de dados
+
+  - Saida de dados
+
+  ```js
+  console.log('O texto que você quiser colocar...');
+  ```
+
+  - Entrada de dados
+
+  ```js
+  import PromptSync from 'prompt-sync'; // Esse import deve ser adicionado na primeira linha da classe criada.
+  this.prompt(''); // Comando que aguardara a entrada do dado do TECLADO. Sempre retornando uma string.
+  ```
+
 - Dentro da pasta **src** crie uma pasta como o _nome do arquivo_
   ```
     mkdir src/[nome_da_pasta]
@@ -24,8 +39,11 @@
   - O arquivo **.ts** deve ser criado com o contéudo abaixo:
 
     ```js
+    import PromptSync from 'prompt-sync';
     export class NomeArquivo implements IAlgoritimo {
       entradaDeDados(): void {
+        console.log('Informe alguma coisa:');
+        let valorInformado = this.prompt('');
         throw new Error('Method not implemented.');
       }
       processamentoDosDados() {
