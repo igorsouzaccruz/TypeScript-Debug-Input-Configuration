@@ -1,5 +1,6 @@
 export interface IAlgoritimo {
   entradaDeDados(): void;
-  processamentoDosDados();
-  saidaDosDados();
+  processamentoDosDados(): void;
+  saidaDosDados(): void;
+  titulo(): string;
 }

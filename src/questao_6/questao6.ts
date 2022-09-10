@@ -1,24 +1,25 @@
-import { Questao } from "../heranca/questao";
-import { IAlgoritimo } from "../interface/algoritimo";
+import PromptSync from 'prompt-sync';
+import { IAlgoritimo } from '../interface/algoritimo';
 
-export class QuestaoSeis extends Questao implements IAlgoritimo {
-  fahrenheit : number;
-  celsius : number;
+export class QuestaoSeis implements IAlgoritimo {
+  prompt = PromptSync();
+  fahrenheit: number;
+  celsius: number;
 
-  constructor() {
-    super("06");
+  titulo(): string {
+    return 'QUESTÃO 6';
   }
-  entradaDeDados(): void {
 
-    this.escreval(" Informe a temperatura em Fahrenheit: ");
-    this.fahrenheit = Number(this.leia());
+  entradaDeDados(): void {
+    this.fahrenheit = Number(
+      this.prompt(' Informe a temperatura em Fahrenheit: ')
+    );
   }
   processamentoDosDados() {
-    this.celsius = (5 * (this.fahrenheit - 32) / 9);
+    this.celsius = (5 * (this.fahrenheit - 32)) / 9;
   }
   saidaDosDados() {
-    this.escreval(` Temperatura em Fahrenheit: ${this.fahrenheit}°F`);
-    this.escreval(` Temperatura em Celsius: ${this.celsius.toFixed(2)}°C`)
+    console.log(` Temperatura em Fahrenheit: ${this.fahrenheit}°F`);
+    console.log(` Temperatura em Celsius: ${this.celsius.toFixed(2)}°C`);
   }
-  
 }

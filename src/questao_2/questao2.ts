@@ -1,40 +1,40 @@
-import { Questao } from "../heranca/questao";
-import { IAlgoritimo } from "../interface/algoritimo";
+import { IAlgoritimo } from '../interface/algoritimo';
 
-export class QuestaoDois extends Questao implements IAlgoritimo {
+import PromptSync from 'prompt-sync';
 
-  nota1 : number = 0;
-  nota2 : number = 0;
-  nota3 : number = 0;
-  media : number = 0;
-  numeroDeNota : number[] = [this.nota1, this.nota2, this.nota3];
+export class QuestaoDois implements IAlgoritimo {
+  prompt = PromptSync();
 
-  constructor() {
-    super('02');
-}
+  resultado: string;
+
+  nota1: number = 0;
+  nota2: number = 0;
+  nota3: number = 0;
+  media: number = 0;
+  numeroDeNota: number[] = [this.nota1, this.nota2, this.nota3];
+
+  constructor() {}
+  titulo(): string {
+    return 'QUESTÃO 2';
+  }
+
   entradaDeDados(): void {
-    this.escreval(' Informe a primeira nota: ');
-    this.nota1 = Number(this.leia());
-    this.escreval(' Informe a segunda nota: ');
-    this.nota2 = Number(this.leia());
-    this.escreval(' Informe a terceira nota: ');
-    this.nota3 = Number(this.leia());
+    this.nota1 = Number(this.prompt(' Informe a primeira nota: '));
+    this.nota2 = Number(this.prompt(' Informe a segunda nota: '));
+    this.nota3 = Number(this.prompt(' Informe a terceira nota: '));
   }
   processamentoDosDados() {
-    const somaDasNotas : number = this.nota1 + this.nota2 + this.nota3;
+    const somaDasNotas: number = this.nota1 + this.nota2 + this.nota3;
     this.media = somaDasNotas / this.numeroDeNota.length;
-    if(this.media === 10){
-      this.resposta = "APROVADO COM LOUVOR!";
-    }
-    else if(this.media >= 7){
-      this.resposta = "APROVADO!";
-    }
-    else{
-      this.resposta = "REPROVADO";
+    if (this.media === 10) {
+      this.resultado = 'APROVADO COM LOUVOR!';
+    } else if (this.media >= 7) {
+      this.resultado = 'APROVADO!';
+    } else {
+      this.resultado = 'REPROVADO';
     }
   }
   saidaDosDados() {
-    this.escreval(this.resposta);
+    console.log(this.resultado);
   }
-
 }
