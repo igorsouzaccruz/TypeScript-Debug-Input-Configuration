@@ -7,6 +7,10 @@ export class QuestaoUm implements IAlgoritimo {
 
   resultado: string = '';
 
+  titulo(): string {
+    return '- QUESTÃO 01'
+  }
+
   entradaDeDados(): void {
     this.numero = Number(this.prompt(' Informe um numero:'));
   }
@@ -20,7 +24,7 @@ export class QuestaoUm implements IAlgoritimo {
   }
 
   saidaDosDados() {
-    console.log('- QUESTÃO 01');
+    console.log(this.titulo());    
     console.log(this.resultado);
   }
 }
