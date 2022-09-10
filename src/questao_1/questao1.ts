@@ -1,36 +1,26 @@
+import PromptSync from 'prompt-sync';
 import { IAlgoritimo } from '../interface/algoritimo';
 
 export class QuestaoUm implements IAlgoritimo {
-  //ENTRADA DO DADO
-  constructor(private numero: number) {}
+  prompt = PromptSync();
+  numero: number = 0;
+
+  resultado: string = '';
+
   entradaDeDados(): void {
-    throw new Error('Method not implemented.');
+    this.numero = Number(this.prompt(' Informe um numero:'));
   }
+
   processamentoDosDados() {
-    throw new Error('Method not implemented.');
+    const parOuImpar: string = this.numero % 2 === 0 ? 'par' : 'impar';
+    const positivoOuNegativo: string =
+      this.numero >= 0 ? 'positivo' : 'negativo';
+
+    this.resultado = ` O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}`;
   }
+
   saidaDosDados() {
-    throw new Error('Method not implemented.');
-  }
-
-  // SAIDA DE DADOS
-  public mostrarResultado(): void {
     console.log('- QUESTÃO 01');
-    const parOuImpar: string = this.isPar() ? 'par' : 'impar';
-    const positivoOuNegativo: string = this.isPositive()
-      ? 'positivo'
-      : 'negativo';
-    console.log(
-      `O numero ${this.numero} é ${parOuImpar} e é ${positivoOuNegativo}`
-    );
-  }
-
-  // PROCESSAMENTO DO DADO
-  private isPar(): boolean {
-    return this.numero % 2 === 0;
-  }
-
-  private isPositive(): boolean {
-    return this.numero >= 0;
+    console.log(this.resultado);
   }
 }
