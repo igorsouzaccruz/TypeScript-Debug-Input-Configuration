@@ -62,7 +62,7 @@
 
 # Para executar/debugar.
 
-- abra o arquivo main.ts localizado na raiz do seu projeto. O modelo **cru** deve estar como abaixo:
+- abra o arquivo main.ts localizado na raiz da pasta **src/** do seu projeto. O modelo **cru** deve estar como abaixo:
 
   ```js
   import { GerenciadorDeAlgoritimo } from './gerenciador_de_algoritimo';
