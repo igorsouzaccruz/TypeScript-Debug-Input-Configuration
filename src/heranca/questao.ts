@@ -1,4 +1,4 @@
-import PromptSync from "prompt-sync";
+import PromptSync from 'prompt-sync';
 export abstract class Questao {
   //Comando para entrada de dados
   private prompt = PromptSync();
@@ -13,7 +13,7 @@ export abstract class Questao {
   }
 
   public leia(): string {
-    return this.prompt("");
+    return this.prompt('');
   }
 
   public escreval(texto: string) {
