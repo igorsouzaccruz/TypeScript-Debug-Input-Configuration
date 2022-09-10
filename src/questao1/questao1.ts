@@ -12,6 +12,7 @@ export class QuestaoUm implements IAlgoritimo {
   entradaDeDados(): void {
     this.numero = Number(this.prompt('Informe um numero:'));
   }
+
   processamentoDosDados() {
     const parOuImpar: string = this.numero % 2 === 0 ? 'é par' : 'é impar';
     const positivoOuNegativo = this.numero >= 0 ? 'é positivo' : 'é negativo';
