@@ -23,6 +23,7 @@
 
   ```js
   import PromptSync from 'prompt-sync'; // Esse import deve ser adicionado na primeira linha da classe criada.
+  prompt = PromptSync(); // Variável que deve ser criada em seu algoritimo para fazer uso do comando de entrada de dados.
   this.prompt(''); // Comando que aguardara a entrada do dado do TECLADO. Sempre retornando uma string.
   ```
 
@@ -41,6 +42,7 @@
     ```js
     import PromptSync from 'prompt-sync';
     export class NomeArquivo implements IAlgoritimo {
+      prompt = PromptSync();
       entradaDeDados(): void {
         console.log('Informe alguma coisa:');
         let valorInformado = this.prompt('');
