@@ -6,11 +6,12 @@
   ```
       npm i
   ```
+
 - Baixar as extensões recomendads no vsCode
   - Clicando no icone de extensões a direita. Verifique imagem a baixo
-    ![Alt text](relative/assets/ExtensoesVsCode.png?raw=true "Extensões")
+    ![Alt text](./assets/ExtensoesVsCode.png?raw=true 'Extensões')
   - Em seguida procure pelas extensões do workspace e instale todas. Verifique imagem a baixo
-    ![Alt text](relative/assets/ExtensoesVsCodeInstal.png?raw=true "Extensões")
+    ![Alt text](./assets/ExtensoesVsCodeInstal.png?raw=true 'Extensões')
 - Projeto está pronto para desenvolvimento.
 
 # Criando os algoritimos.
@@ -49,7 +50,7 @@
     export class NomeArquivo implements IAlgoritimo {
       prompt = PromptSync();
 
-      titulo():string{
+      titulo(): string {
         //return 'QuestaoBliBli'
         throw new Error('Method not implemented.');
       }
