@@ -6,4 +6,4 @@ const algoritimos: Array<IAlgoritimo> = [];
 const gerenciadorDosAlgoritimos: GerenciadorDeAlgoritimo =
   new GerenciadorDeAlgoritimo(algoritimos);
 
-gerenciadorDosAlgoritimos.executar(); //TEste git
+gerenciadorDosAlgoritimos.executar();
