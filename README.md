@@ -40,6 +40,7 @@
   - O arquivo **.ts** deve ser criado com o contéudo abaixo:
 
     ```js
+    import { IAlgoritimo } from '../interface/algoritimo';
     import PromptSync from 'prompt-sync';
     export class NomeArquivo implements IAlgoritimo {
       prompt = PromptSync();
