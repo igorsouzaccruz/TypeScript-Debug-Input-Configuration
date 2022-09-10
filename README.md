@@ -1,68 +1,96 @@
-# TypeScript-Debug-Input-Configuration
-<h1> All steps to install TypeScript with debug and a prompt-sync for a input values. </h1>
+# Configurando
 
-- criar pasta, entrar nela e abri um terminal
-  * executar o npm i typescript@4.7.4 ts-node@10.9.1 prompt-sync@4.2.0 @types/prompt-sync@4.1.1 --save
-  * executar o npm i -g npx (se ainda não existir)
-- Criar o arquivo tsconfig.json    com esse conteudo abaixo
-{
-  "compilerOptions": {
-        "target": "es2017",
-        "module": "commonjs",
-        "outDir": "./dist",
-        "sourceMap": true,
-        "allowSyntheticDefaultImports": true
-    },
-    "exclude": [
-        "dist",
-        "node_modules"
-    ]
-}
+- Utilizar versão do node 16.16.0
+- Entrar na pasta e rodar o commando abaixo:
 
-dependencias:
-{
-  "dependencies": {
-    "@types/prompt-sync": "4.1.1",
-    "prompt-sync": "4.2.0",
-    "ts-node": "10.9.1",
-    "typescript": "4.7.4"
-  }
-}
+  ```
+      npm i
+  ```
 
-- Criar uma pasta dentro do projeto chamada ".vscode" e dentro dela colocar criar um arquivo chamado "launch.json" o conteudo abaixo:
-{
-    // Use o IntelliSense para saber mais sobre os atributos possíveis.
-    // Focalizar para exibir as descrições dos atributos existentes.
-    // Para obter mais informações, acesse: <https://go.microsoft.com/fwlink/?linkid=830387>
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "ts-node",
-            "type": "node",
-            "request": "launch",
-            "args": [
-                "${relativeFile}"
-            ],
-            "runtimeArgs": [
-                "-r",
-                "ts-node/register"
-            ],
-            "cwd": "${workspaceRoot}",
-            "protocol": "inspector",
-            "internalConsoleOptions": "openOnSessionStart",
-            "console": "externalTerminal"
-        }
-    ]
-}
+- Projeto está pronto para desenvolvimento.
 
-- Criar um arquivo de exemplo com o conteudo abaixo (SE QUISER):
-    const promptSync = require("prompt-sync");
-    const prompter = promptSync();
+# Criando os algoritimos.
 
-    const text: string = prompter("Diz aqui qualquer coisa: ");
+- Comandos para entrada e saide de dados
 
-    console.log('AAAAAAAAAAAA');
-    console.log(text);
+  - Saida de dados
 
-- Para executar/debugar 
-    - npx ts-node {nomeDoArquivo.ts} (editado)
+  ```js
+  console.log('O texto que você quiser colocar...');
+  ```
+
+  - Entrada de dados
+
+  ```js
+  import PromptSync from 'prompt-sync'; // Esse import deve ser adicionado na primeira linha da classe criada.
+  this.prompt(''); // Comando que aguardara a entrada do dado do TECLADO. Sempre retornando uma string.
+  ```
+
+- Dentro da pasta **src** crie uma pasta como o _nome do arquivo_
+  ```
+    mkdir src/[nome_da_pasta]
+  ```
+- Dentro da pasta criei o arquivo **.ts**
+
+  ```
+      type nul > src/[nome_da_pasta]/[nome_do_arquivo].ts
+  ```
+
+  - O arquivo **.ts** deve ser criado com o contéudo abaixo:
+
+    ```js
+    import PromptSync from 'prompt-sync';
+    export class NomeArquivo implements IAlgoritimo {
+      entradaDeDados(): void {
+        console.log('Informe alguma coisa:');
+        let valorInformado = this.prompt('');
+        throw new Error('Method not implemented.');
+      }
+      processamentoDosDados() {
+        throw new Error('Method not implemented.');
+      }
+      saidaDosDados() {
+        throw new Error('Method not implemented.');
+      }
+    }
+    ```
+
+  - **Então desenvolva seu algoritimo**.
+
+# Para executar/debugar.
+
+- abra o arquivo main.ts localizado na raiz do seu projeto. O modelo **cru** deve estar como abaixo:
+
+  ```js
+  import { GerenciadorDeAlgoritimo } from './gerenciador_de_algoritimo';
+  import { IAlgoritimo } from './interface/algoritimo';
+
+  const algoritimos: Array<IAlgoritimo> = [];
+
+  const gerenciadorDosAlgoritimos: GerenciadorDeAlgoritimo =
+    new GerenciadorDeAlgoritimo(algoritimos);
+
+  gerenciadorDosAlgoritimos.executar();
+  ```
+
+- para cada _novo algoritimo criado_ adicione-o no Array de algoritimos. Exemplo abaixo:
+
+  - const algoritimos: Array<IAlgoritimo> = [**new NomeArquivoCriado(), new Nome2ArquivoCriado(), new Nome3ArquivoCriado()**];
+
+  ```js
+  import { GerenciadorDeAlgoritimo } from './gerenciador_de_algoritimo';
+  import { IAlgoritimo } from './interface/algoritimo';
+
+  const algoritimos: Array<IAlgoritimo> = [
+    new NomeArquivoCriado(),
+    new Nome2ArquivoCriado(),
+    new Nome3ArquivoCriado(),
+  ];
+
+  const gerenciadorDosAlgoritimos: GerenciadorDeAlgoritimo =
+    new GerenciadorDeAlgoritimo(algoritimos);
+
+  gerenciadorDosAlgoritimos.executar();
+  ```
+
+- E com o arquivo **main.ts** aberto execute o f5 no vsCode.
