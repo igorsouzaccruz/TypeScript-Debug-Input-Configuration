@@ -44,6 +44,11 @@
     import PromptSync from 'prompt-sync';
     export class NomeArquivo implements IAlgoritimo {
       prompt = PromptSync();
+
+      titulo():string{
+        //return 'QuestaoBliBli'
+        throw new Error('Method not implemented.');
+      }
       entradaDeDados(): void {
         console.log('Informe alguma coisa:');
         let valorInformado = this.prompt('');
