@@ -5,6 +5,10 @@ export class QuestaoSeis implements IAlgoritimo {
   //ENTRADA DO DADO
   constructor(private tempFahrenheit: number) {}
 
+  titulo(): string {
+    return 'QUESTÃO 6';
+  }
+
   entradaDeDados(): void {
     throw new Error('Method not implemented.');
   }

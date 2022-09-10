@@ -14,6 +14,10 @@ export class QuestaoSete implements IAlgoritimo {
     this.realizarVotacao();
   }
 
+  titulo(): string {
+    return 'QUESTÃO 7';
+  }
+
   entradaDeDados(): void {
     throw new Error('Method not implemented.');
   }

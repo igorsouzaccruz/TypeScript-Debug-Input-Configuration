@@ -7,6 +7,9 @@ export class QuestaoNove implements IAlgoritimo {
   constructor() {
     this.somaDosTermosDaSerie();
   }
+  titulo(): string {
+    return 'QUESTÃO 9';
+  }
   entradaDeDados(): void {
     throw new Error('Method not implemented.');
   }

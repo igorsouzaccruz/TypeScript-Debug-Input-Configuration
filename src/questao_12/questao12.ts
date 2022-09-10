@@ -2,6 +2,9 @@ import { IAlgoritimo } from '../interface/algoritimo';
 // Fazer um algoritmo para calcular e escrever a seguinte soma: 37x38/1 + 36x37/2 + 35x36/3 + ... + 1x2/37
 
 export class QuestaoDoze implements IAlgoritimo {
+  titulo(): string {
+    return 'QUESTÃO 12';
+  }
   entradaDeDados(): void {
     throw new Error('Method not implemented.');
   }

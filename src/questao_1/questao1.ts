@@ -8,7 +8,7 @@ export class QuestaoUm implements IAlgoritimo {
   resultado: string = '';
 
   titulo(): string {
-    return '- QUESTÃO 01'
+    return '- QUESTÃO 01';
   }
 
   entradaDeDados(): void {
@@ -24,7 +24,7 @@ export class QuestaoUm implements IAlgoritimo {
   }
 
   saidaDosDados() {
-    console.log(this.titulo());    
+    console.log(this.titulo());
     console.log(this.resultado);
   }
 }

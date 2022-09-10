@@ -7,6 +7,9 @@ export class QuestaoQuatro implements IAlgoritimo {
   constructor() {
     this.somaDosNumerosInteirosDe1A100();
   }
+  titulo(): string {
+    return 'QUESTÃO 4';
+  }
   entradaDeDados(): void {
     throw new Error('Method not implemented.');
   }
