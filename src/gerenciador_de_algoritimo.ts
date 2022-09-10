@@ -4,11 +4,18 @@ export class GerenciadorDeAlgoritimo {
   constructor(private algoritimos: Array<IAlgoritimo>) {}
 
   public executar() {
-    this.entradaDeDados();
+    if (this.algoritimos.length > 0) {
+      this.entradaDeDados();
 
-    this.processamentoDosDados();
+      this.processamentoDosDados();
 
-    this.saidaDosDados();
+      this.saidaDosDados();
+    }
+    console.log();
+    console.log();
+    console.log('Nenhum algoritimo foi adicionado ao gerenciador!!!!');
+    console.log();
+    console.log();
   }
 
   private entradaDeDados = () => {
