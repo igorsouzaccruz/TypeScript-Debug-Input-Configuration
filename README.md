@@ -8,7 +8,7 @@
   ```
 
 - Baixar as extensões recomendads no vsCode
-  - Clicando no icone de extensões a direita. Verifique imagem a baixo
+  - Clicando no icone de extensões a esquerda (Icone marcado de AZUL). Verifique imagem a baixo
     ![Alt text](./assets/ExtensoesVsCode.png?raw=true 'Extensões')
   - Em seguida procure pelas extensões do workspace e instale todas. Verifique imagem a baixo
     ![Alt text](./assets/ExtensoesVsCodeInstal.png?raw=true 'Extensões')
