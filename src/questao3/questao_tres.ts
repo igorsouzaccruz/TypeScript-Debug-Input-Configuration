@@ -36,7 +36,7 @@ export class Questao3 implements IAlgoritimo {
         this.menorIdade = this.idade;
       }
     }
-    this.mediaIdades = this.somaIdades / this.quantidadeIdades;
+    idade = this.somaIdades / this.quantidadeIdades;
   }
   saidaDosDados() {
     console.log(`A média das idades é: ${this.mediaIdades}`);
