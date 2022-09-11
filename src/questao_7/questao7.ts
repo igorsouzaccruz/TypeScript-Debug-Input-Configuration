@@ -32,7 +32,6 @@ export class QuestaoSete implements IAlgoritimo {
 
   // SAIDA DE DADOS
   public mostrarResultado(): void {
-    console.log('- QUESTÃO 07');
     this.candidatos.forEach((candidato) => {
       console.log(
         `O Candidato ${candidato.nome} recebeu ${candidato.votos} voto(s)`
