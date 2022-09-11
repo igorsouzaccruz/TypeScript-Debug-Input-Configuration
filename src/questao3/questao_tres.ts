@@ -13,7 +13,6 @@ export class Questao3 implements IAlgoritimo {
       console.log('Informe a idade: ');
       this.idade.idadeDigitada = Number(this.prompt(''));
       this.processamentoDosDados();
-      console.log(this.idade.idadeDigitada, 'teste');
     } while (this.idade.idadeDigitada != 0);
   }
   processamentoDosDados() {
