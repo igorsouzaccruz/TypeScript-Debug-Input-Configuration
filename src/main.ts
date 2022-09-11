@@ -6,8 +6,9 @@ import { QuestaoCinco } from './questao_5/questao5';
 import { QuestaoOito } from './questao_8/questao8';
 import { QuestaoNove } from './questao_9/questao9';
 import { QuestaoDoze } from './questao_12/questao12';
+import { QuestaoDez } from './questao_10/questao10';
 
-const algoritimos: Array<IAlgoritimo> = [new QuestaoDoze()];
+const algoritimos: Array<IAlgoritimo> = [new QuestaoDez()];
 
 const gerenciadorDosAlgoritimos: GerenciadorDeAlgoritimo =
   new GerenciadorDeAlgoritimo(algoritimos);
