@@ -1,15 +1,9 @@
 import PromptSync from 'prompt-sync';
 import { IAlgoritimo } from '../interface/algoritimo';
+import { Idade } from './idade';
 export class Questao3 implements IAlgoritimo {
   prompt = PromptSync();
-
-  private idade: number;
-  private primeiraEntrada: boolean = true;
-  private somaIdades: number = 0;
-  private quantidadeIdades: number = 0;
-  private mediaIdades: number;
-  private maiorIdade: number;
-  private menorIdade: number;
+  private idade = new Idade();
 
   titulo(): string {
     return 'Questao 3';
@@ -17,30 +11,23 @@ export class Questao3 implements IAlgoritimo {
   entradaDeDados(): void {
     do {
       console.log('Informe a idade: ');
-      this.idade = Number(this.prompt(''));
+      this.idade.idadeDigitada = Number(this.prompt(''));
       this.processamentoDosDados();
-    } while (this.idade != 0);
+      console.log(this.idade.idadeDigitada, 'teste');
+    } while (this.idade.idadeDigitada != 0);
   }
   processamentoDosDados() {
-    if (this.primeiraEntrada) {
-      this.maiorIdade = this.idade;
-      this.menorIdade = this.idade;
-      this.primeiraEntrada = false;
+    this.idade.verificarPrimeiraEntrada();
+    if (this.idade.idadeDigitada != 0) {
+      this.idade.somaIdades = this.idade.somaIdades + this.idade.idadeDigitada;
+      this.idade.quantidadeIdades++;
+      this.idade.verificarMenorEMaiorIdade();
     }
-    if (this.idade != 0) {
-      this.somaIdades = this.somaIdades + this.idade;
-      this.quantidadeIdades++;
-      if (this.idade > this.maiorIdade) {
-        this.maiorIdade = this.idade;
-      } else if (this.idade < this.menorIdade) {
-        this.menorIdade = this.idade;
-      }
-    }
-    idade = this.somaIdades / this.quantidadeIdades;
+    this.idade.calcularMediaIdades();
   }
   saidaDosDados() {
-    console.log(`A média das idades é: ${this.mediaIdades}`);
-    console.log(`A maior idade é: ${this.maiorIdade}`);
-    console.log(`A menor idade é: ${this.menorIdade}`);
+    console.log(`A média das idades é: ${this.idade.mediaIdades}`);
+    console.log(`A maior idade é: ${this.idade.idadeMaior}`);
+    console.log(`A menor idade é: ${this.idade.idadeMenor}`);
   }
 }
