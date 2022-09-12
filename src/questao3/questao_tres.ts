@@ -1,32 +1,39 @@
 import PromptSync from 'prompt-sync';
 import { IAlgoritimo } from '../interface/algoritimo';
-import { Idade } from './idade';
+import { GerenciadorIdades } from './gerenciador_idades';
 export class Questao3 implements IAlgoritimo {
   prompt = PromptSync();
-  private idade = new Idade();
+  idades: Array<number> = [];
+  mediaIdade: number;
+  maiorIdade: number;
+  menorIdade: number;
 
   titulo(): string {
     return 'Questao 3';
   }
+
   entradaDeDados(): void {
+    let valorInformado: string = '';
     do {
-      console.log('Informe a idade: ');
-      this.idade.idadeDigitada = Number(this.prompt(''));
-      this.processamentoDosDados();
-    } while (this.idade.idadeDigitada != 0);
+      valorInformado = this.prompt('Informe a idade: ');
+      // Adicionando todas as entradas de dados... As IDADES
+      const idadeInformada = Number(valorInformado);
+      if (idadeInformada > 0) {
+        this.idades.push(Number(valorInformado));
+      }
+    } while (valorInformado !== '0');
   }
+
   processamentoDosDados() {
-    this.idade.verificarPrimeiraEntrada();
-    if (this.idade.idadeDigitada != 0) {
-      this.idade.somaIdades = this.idade.somaIdades + this.idade.idadeDigitada;
-      this.idade.quantidadeIdades++;
-      this.idade.verificarMenorEMaiorIdade();
-    }
-    this.idade.calcularMediaIdades();
+    const gerenciadorDeIdades = new GerenciadorIdades(this.idades);
+    this.mediaIdade = gerenciadorDeIdades.media();
+    this.menorIdade = gerenciadorDeIdades.menor();
+    this.maiorIdade = gerenciadorDeIdades.maior();
   }
+
   saidaDosDados() {
-    console.log(`A média das idades é: ${this.idade.mediaIdades}`);
-    console.log(`A maior idade é: ${this.idade.idadeMaior}`);
-    console.log(`A menor idade é: ${this.idade.idadeMenor}`);
+    console.log(`A média das idades é: ${this.mediaIdade}`);
+    console.log(`A maior idade é: ${this.maiorIdade}`);
+    console.log(`A menor idade é: ${this.menorIdade}`);
   }
 }
