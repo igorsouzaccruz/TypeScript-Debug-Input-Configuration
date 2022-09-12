@@ -1,89 +1,47 @@
-import PromptSync from 'prompt-sync';
 import { IAlgoritimo } from '../interface/algoritimo';
-import { Candidato } from './candidato';
-
-const prompter = PromptSync();
-
+import PromptSync from 'prompt-sync';
 export class QuestaoSete implements IAlgoritimo {
-  private votosInvalidos: number = 0;
 
-  constructor(
-    private quantidadeVotantes: number,
-    private candidatos: Array<Candidato>
-  ) {
-    this.realizarVotacao();
-  }
+  prompt = PromptSync();
+  private candidatoA: number = 0;
+  private candidatoB: number = 0;
+  private candidatoC: number = 0;
+  private votosInvalidos: number = 0;
+  private votos: number[] = [];
 
   titulo(): string {
     return 'QUESTÃO 7';
   }
 
   entradaDeDados(): void {
-    throw new Error('Method not implemented.');
-  }
+    let votantes = Number(this.prompt('Informe número de votantes? '));
 
+    for (let index = 0; index < votantes; index++) {
+      this.votos.push(Number(this.prompt("Deseja votar em quem? Lembrando números (1, 2 ou 3) ")));
+    }
+  }
   processamentoDosDados() {
-    throw new Error('Method not implemented.');
-  }
-
-  saidaDosDados() {
-    throw new Error('Method not implemented.');
-  }
-
-  // SAIDA DE DADOS
-  public mostrarResultado(): void {
-    this.candidatos.forEach((candidato) => {
-      console.log(
-        `O Candidato ${candidato.nome} recebeu ${candidato.votos} voto(s)`
-      );
+    this.votos.forEach(voto => {
+      switch (voto) {
+        case 1:
+          this.candidatoA++;
+          break;
+        case 2:
+          this.candidatoB++;
+          break;
+        case 3:
+          this.candidatoC++;
+          break;
+        default:
+          this.votosInvalidos++;
+          break;
+      }
     });
-    console.log(`Votos anulados: ${this.votosInvalidos} voto(s)`);
   }
-
-  private realizarVotacao() {
-    const mensagemParaPedirVoto: string = this.mensagemParaPedirVoto();
-    for (let index = 0; index < this.quantidadeVotantes; index++) {
-      console.log();
-      console.log(mensagemParaPedirVoto);
-      const voto: number = Number(prompter(''));
-      this.addVoto(voto);
-    }
-  }
-
-  private mensagemParaPedirVoto(): string {
-    const ultimaVirgulaEncontrada = new RegExp(', ' + '([^' + ',' + ']*)$');
-    const trocarPorOu = ' ou ' + '$1'; //$1 representa a string depois da ULTIMA virgula encontrada
-    const opcoesDeVotos = this.candidatos
-      .map((candidato) => candidato.id)
-      .join(', ')
-      .replace(ultimaVirgulaEncontrada, trocarPorOu);
-    return `Deseja votar em quem? Lembrando números (${opcoesDeVotos})`;
-  }
-
-  private addVoto(voto: number): void {
-    const foiInvalidado = this.votoInvalido(voto);
-    if (foiInvalidado) {
-      console.log(`Seu voto foi anulado`);
-      return;
-    }
-    const candidatoVotado: Candidato = this.candidatos.find(
-      (candidato) => candidato.id === voto
-    );
-    candidatoVotado.addVoto();
-  }
-
-  private votoInvalido(voto: number): boolean {
-    if (isNaN(voto)) {
-      this.votosInvalidos++;
-      return true;
-    }
-    let candidatoVotado: Candidato = this.candidatos.find(
-      (candidato) => candidato.id === voto
-    );
-    if (!candidatoVotado) {
-      this.votosInvalidos++;
-      return true;
-    }
-    return false;
+  saidaDosDados() {
+    console.log(`Candidato A: ${this.candidatoA} voto(s)`);
+    console.log(`Candidato B: ${this.candidatoB} voto(s)`);
+    console.log(`Candidato C: ${this.candidatoC} voto(s)`);
+    console.log(`Votos invalidos ou nulos: ${this.votosInvalidos} voto(s)`);
   }
 }
