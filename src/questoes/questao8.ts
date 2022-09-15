@@ -7,7 +7,7 @@ const mostrarPrimosCompreendidos = (valorInicial : number, valorFinal : number) 
 
   for(let index : number = 0; index <= valorFinal; index++){
     if(valorInicial % 2 === 0){
-      let addPrimos = valorInicial + 1;
+      let addPrimos = valorInicial;
         primosCompreendidos.push(addPrimos);
     }
   }
