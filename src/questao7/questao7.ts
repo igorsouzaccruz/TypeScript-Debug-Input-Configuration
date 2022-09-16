@@ -9,7 +9,7 @@ export class QuestaoSete implements IAlgoritimo {
   private votos: number[] = []
 
   titulo(): string {
-    return 'QUESTÃO 1'
+    return 'QUESTÃO 7'
   }
 
   entradaDeDados(): void {
