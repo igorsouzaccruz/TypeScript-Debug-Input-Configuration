@@ -19,7 +19,10 @@ export class QuestaoSete implements IAlgoritimo {
       this.votos.push(
         Number(
           this.prompt(
-            'Vote em um dos candidados Lula, Bolsonaro, Ciro respectivamente a seguir 1, 2 ou 3: ')))
+            'Vote em um dos candidados Lula, Bolsonaro, Ciro respectivamente a seguir 1, 2 ou 3: '
+          )
+        )
+      )
     }
   }
 
@@ -43,8 +46,10 @@ export class QuestaoSete implements IAlgoritimo {
   }
   saidaDosDados() {
     console.log(`Candidato Lulinha: ${this.candidatoUm} voto(s) `)
-    console.log(`Candidato Boso: ${this.candidatoDois} voto(s) `)
+    console.log(`Candidato Bozo: ${this.candidatoDois} voto(s) `)
     console.log(`Candidato Ciro: ${this.candidatoTres} voto(s) `)
-    console.log(`Entregar o Brasil para os índios: ${this.votosInvalidos} voto(s) `)
+    console.log(
+      `Entregar o Brasil para os índios: ${this.votosInvalidos} voto(s) `
+    )
   }
 }
