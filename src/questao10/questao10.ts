@@ -11,7 +11,7 @@ export class QuestaoDez implements IAlgoritimo {
   }
 
   entradaDeDados(): void {
-    console.log('Não precisa de interação com o usuário')
+    console.log('c')
   }
 
   processamentoDosDados() {
