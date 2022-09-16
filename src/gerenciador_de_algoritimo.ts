@@ -4,17 +4,26 @@ export class GerenciadorDeAlgoritimo {
   constructor(private algoritimos: Array<IAlgoritimo>) {}
 
   public executar() {
-    this.entradaDeDados();
+    if (this.algoritimos.length > 0) {
+      this.entradaDeDados();
 
-    this.processamentoDosDados();
+      this.processamentoDosDados();
 
-    this.saidaDosDados();
+      this.saidaDosDados();
+      return;
+    }
+    console.log();
+    console.log();
+    console.log('Nenhum algoritimo foi adicionado ao gerenciador!!!!');
+    console.log();
+    console.log();
   }
 
   private entradaDeDados = () => {
     console.log('------------------ ENTRADA DE DADOS ------------------');
 
     this.algoritimos.forEach((questao) => {
+      console.log(`- ${questao.titulo()}`);
       questao.entradaDeDados();
     });
     console.log();
@@ -38,6 +47,7 @@ export class GerenciadorDeAlgoritimo {
 
     this.algoritimos.forEach((questao) => {
       console.log();
+      console.log(`- ${questao.titulo()}`);
       questao.saidaDosDados();
     });
     console.log('------------------------------------------------------');
