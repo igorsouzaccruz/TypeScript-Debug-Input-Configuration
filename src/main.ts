@@ -6,7 +6,7 @@ import { QuestaoTres } from './questao3/questao3';
 import { QuestaoQuatro } from './questao4/questao4';
 import { QuestaoCinco } from './questao5/questao5';
 import { QuestaoSeis } from './questao6/questao6';
-import { QuestaoSete } from './questao7/questao7';
+
 
 const algoritimos: Array<IAlgoritimo> = [new QuestaoSete()]
 
