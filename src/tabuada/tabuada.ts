@@ -12,47 +12,56 @@ export class Tabuada extends VisualgBase implements IAlgoritimo {
 
   processamentoDosDados() {
     const qtdAgrupador = 3;
-    let retorno =
+    let stringBuilder =
       '   ________________________TABUADA____________________________\n';
 
-    let numTabuada = 1;
-    for (numTabuada; numTabuada <= this.numero; numTabuada += qtdAgrupador) {
-      for (let numeroLinha = 1; numeroLinha <= 10; numeroLinha++) {
-        for (let indexGrupo = 0; indexGrupo < qtdAgrupador; indexGrupo++) {
-          const termo = numTabuada + indexGrupo;
-          if (termo > this.numero) {
-            retorno += this.gerarDivisor('');
+    let agrupador = 1;
+    for (agrupador; agrupador <= this.numero; agrupador += qtdAgrupador) {
+      for (let operador = 1; operador <= 10; operador++) {
+        for (let indiceGrupo = 0; indiceGrupo < qtdAgrupador; indiceGrupo++) {
+          const termo = agrupador + indiceGrupo;
+          const chegouNoFim = termo > this.numero;
+          if (chegouNoFim) {
+            //Preenchendo com espaço vázio
+            stringBuilder += this.gerarDivisor('');
             continue;
           }
 
-          retorno += this.gerarDivisor(
-            `${
-              indexGrupo === 0 ? '  |' : ''
-            } ${numeroLinha}${this.identarOperador(numeroLinha)}* ${termo} = ${
-              termo * numeroLinha
-            }`
-          );
+          const ehInicioDaLinha = indiceGrupo === 0;
+          let linha = '';
+          if (ehInicioDaLinha) {
+            linha += '  |';
+          }
+          linha += ` ${termo} * ${operador}${this.identar(operador)}= ${
+            operador * termo
+          }`;
+
+          stringBuilder += this.gerarDivisor(linha);
         }
-        retorno += '\n';
+        stringBuilder += '\n';
       }
 
-      retorno +=
+      stringBuilder +=
         '  |___________________________________________________________|\n';
     }
-    this.saidaDoDado = retorno;
-  }
-
-  identarOperador(numeroLinha: number): string {
-    return numeroLinha < 10 ? '  ' : ' ';
+    this.saidaDoDado = stringBuilder;
   }
 
   saidaDosDados() {
     console.log(this.saidaDoDado);
   }
 
-  private gerarDivisor(linha: string): string {
-    const quantidadeDeEspacosVazios = 21 - linha.length - 1;
-    for (let index = 0; index < quantidadeDeEspacosVazios; index++) {
+  identar(operador: number): string {
+    return operador < 10 ? '  ' : ' ';
+  }
+
+  gerarDivisor(linha: string): string {
+    const qtdCharPorLinha = 21;
+    const tamanhoDaLinhaASerPreenchida = linha.length;
+    const qtdDeCharReservado = 1;
+    const qtdParaPreencher =
+      qtdCharPorLinha - tamanhoDaLinhaASerPreenchida - qtdDeCharReservado;
+    for (let indice = 0; indice < qtdParaPreencher; indice++) {
       linha += ' ';
     }
     linha += '|';
