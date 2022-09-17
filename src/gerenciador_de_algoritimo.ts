@@ -23,7 +23,6 @@ export class GerenciadorDeAlgoritimo {
     console.log('------------------ ENTRADA DE DADOS ------------------');
 
     this.algoritimos.forEach((questao) => {
-      console.log(`- ${questao.titulo()}`);
       questao.entradaDeDados();
     });
     console.log();
@@ -47,7 +46,6 @@ export class GerenciadorDeAlgoritimo {
 
     this.algoritimos.forEach((questao) => {
       console.log();
-      console.log(`- ${questao.titulo()}`);
       questao.saidaDosDados();
     });
     console.log('------------------------------------------------------');

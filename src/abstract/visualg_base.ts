@@ -6,7 +6,7 @@ export abstract class VisualgBase {
     console.log(texto);
   }
 
-  public leia(texto: string = ''): string | number {
+  public leia(texto: string = ''): any {
     let resposta = this.prompt(texto);
     if (!Number.isNaN(resposta)) {
       return Number(resposta);
