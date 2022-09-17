@@ -8,7 +8,7 @@ import { QuestaoCinco } from './questao5/questao5';
 import { QuestaoSeis } from './questao6/questao6';
 
 
-const algoritimos: Array<IAlgoritimo> = [new QuestaoSete()]
+const algoritimos: Array<IAlgoritimo> = [new QuestaoSeis()]
 
 const gerenciadorDosAlgoritimos: GerenciadorDeAlgoritimo =
   new GerenciadorDeAlgoritimo(algoritimos);
