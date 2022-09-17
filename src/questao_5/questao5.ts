@@ -10,11 +10,10 @@ export class QuestaoCinco implements IAlgoritimo {
   somaDosNumerosPares: number = 0;
   numerosCompreendidos: number[] = [];
 
-  titulo(): string {
-    return 'QUESTÃO 5';
-  }
-
   entradaDeDados(): void {
+    console.log(
+      '  - Informe 2 valores para calcular a soma dos cubos dos numeros pares'
+    );
     this.a = Number(this.prompt(' Informe o valor de A:'));
     this.b = Number(this.prompt(' Informe o valor de B:'));
   }
@@ -30,6 +29,10 @@ export class QuestaoCinco implements IAlgoritimo {
     }
   }
   saidaDosDados() {
+    console.log(
+      `- Resultado da soma dos cubos dos numeros pares entre ${this.a} e ${this.b}`
+    );
+
     if (this.a < this.b) {
       console.log(`${this.somaDosNumerosPares}`);
       console.log(`${this.numerosCompreendidos}`);
