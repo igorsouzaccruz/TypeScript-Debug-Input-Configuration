@@ -10,10 +10,6 @@ export class QuestaoDois implements IAlgoritimo {
 
   resultado: string;
 
-  titulo(): string {
-    return 'QUESTÃO 2';
-  }
-
   entradaDeDados(): void {
     this.nota1 = Number(this.prompt('Informe a nota 1: '));
     this.nota2 = Number(this.prompt('Informe a nota 2: '));

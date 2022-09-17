@@ -1,16 +1,11 @@
-import PromptSync from 'prompt-sync';
+import { VisualgBase } from '../abstract/visualg_base';
 import { IAlgoritimo } from '../interface/algoritimo';
-export class QuestaoUm implements IAlgoritimo {
-  prompt = PromptSync();
+export class QuestaoUm extends VisualgBase implements IAlgoritimo {
   numero: number;
   resultado: string;
 
-  titulo(): string {
-    return 'QUESTÃO 1';
-  }
-
   entradaDeDados(): void {
-    this.numero = Number(this.prompt('Informe um numero:'));
+    this.numero = this.leia('Informe um numero:');
   }
 
   processamentoDosDados() {
@@ -19,6 +14,6 @@ export class QuestaoUm implements IAlgoritimo {
     this.resultado = `O numero ${this.numero} ${parOuImpar} e ${positivoOuNegativo} `;
   }
   saidaDosDados() {
-    console.log(this.resultado);
+    this.escreval(this.resultado);
   }
 }
