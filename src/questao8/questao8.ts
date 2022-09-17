@@ -28,11 +28,11 @@ export class QuestaoOito implements IAlgoritimo {
         (!(numero % 2 === 0) &&
           !(numero % 3 === 0) &&
           !(numero % 7 === 0) &&
-          numero > 1) ||
-        numero === 2 ||
-        numero === 3 ||
-        numero === 5 ||
-        numero === 7
+            numero > 1) ||
+            numero === 2 ||
+            numero === 3 ||
+            numero === 5 ||
+            numero === 7
       ) {
         this.numerosPrimos.push(numero)
       }
