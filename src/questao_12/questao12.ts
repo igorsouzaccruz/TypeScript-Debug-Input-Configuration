@@ -7,9 +7,8 @@ export class QuestaoDoze implements IAlgoritimo {
   n1: number;
   n2: number;
   n3: number;
-  soma: number = 0;
-  //Fazer um algoritmo para calcular e escrever a seguinte soma: 37x38/1
-  //+ 36x37/2 + 35x36/2 + ... + 1x2/37
+  soma: number;
+  operacao: string;
   titulo(): string {
     return 'QUESTÃO 12';
   }
@@ -18,18 +17,20 @@ export class QuestaoDoze implements IAlgoritimo {
     this.n1 = 37;
     this.n2 = 38;
     this.n3 = 1;
+    this.soma = 0;
+    this.operacao = '';
   }
   processamentoDosDados() {
-    for (let contador: number = 0; contador <= this.n1; contador++) {
-      if (this.n1 > this.n3) {
-        this.soma += (this.n1 * this.n2) / this.n3;
-      }
+    for (let contador: number = 0; contador < 37; contador++) {
+      this.soma += (this.n1 * this.n2) / this.n3;
+      this.operacao += ` ${this.n1} x ${this.n2} / ${this.n3}\n`;
+      this.n1 -= 1;
+      this.n2 -= 1;
+      this.n3 += 1;
     }
-    this.n1 = this.n1 - 1;
-    this.n2 = this.n2 - 1;
-    this.n3 = this.n3 + 1;
   }
   saidaDosDados() {
+    console.log(this.operacao);
     console.log(this.soma);
   }
 }

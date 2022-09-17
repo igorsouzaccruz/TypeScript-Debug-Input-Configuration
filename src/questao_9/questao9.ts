@@ -5,9 +5,10 @@ import PromptSync from 'prompt-sync';
 export class QuestaoNove implements IAlgoritimo {
   prompt = PromptSync();
 
-  termoUm: number = 1000;
-  termoDois: number = 1;
-  soma: number = 0;
+  termoUm: number;
+  termoDois: number;
+  soma: number;
+  operacao: string;
 
   constructor() {}
 
@@ -15,21 +16,27 @@ export class QuestaoNove implements IAlgoritimo {
     return 'QUESTÃO 9';
   }
 
-  entradaDeDados(): void {}
+  entradaDeDados(): void {
+    this.termoUm = 1000;
+    this.termoDois = 1;
+    this.soma = 0;
+    this.operacao = '';
+  }
   processamentoDosDados() {
-    for (let contador: number = 0; contador < 50; contador++) {
+    for (let contador: number = 1; contador <= 50; contador++) {
       if (this.termoUm % 2 == 0) {
         this.soma += this.termoUm / this.termoDois;
       } else {
         this.soma -= this.termoUm / this.termoDois;
       }
+      this.operacao += ` ${this.termoUm} / ${this.termoDois}\n`;
+
+      this.termoDois += 1;
+      this.termoUm -= 3;
     }
-    console.log(
-      `${this.termoUm} / ${this.termoDois} - ${(this.termoUm =
-        this.termoUm - 3)} / ${(this.termoDois = this.termoDois + 1)}`
-    );
   }
   saidaDosDados() {
+    console.log(this.operacao);
     console.log(this.soma);
   }
 }

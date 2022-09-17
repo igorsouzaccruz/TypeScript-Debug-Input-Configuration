@@ -1,8 +1,8 @@
 import { GerenciadorDeAlgoritimo } from './gerenciador_de_algoritimo';
 import { IAlgoritimo } from './interface/algoritimo';
-import { QuestaoDoze } from './questao_12/questao12';
+import { QuestaoOnze } from './questao_11/questao11';
 
-const algoritimos: Array<IAlgoritimo> = [new QuestaoDoze()];
+const algoritimos: Array<IAlgoritimo> = [new QuestaoOnze()];
 
 const gerenciadorDosAlgoritimos: GerenciadorDeAlgoritimo =
   new GerenciadorDeAlgoritimo(algoritimos);

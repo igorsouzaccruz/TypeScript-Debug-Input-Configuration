@@ -50,6 +50,5 @@ export class GerenciadorDeAlgoritimo {
       console.log(`- ${questao.titulo()}`);
       questao.saidaDosDados();
     });
-    console.log('------------------------------------------------------');
   };
 }
