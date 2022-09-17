@@ -26,7 +26,9 @@ export class Tabuada extends VisualgBase implements IAlgoritimo {
           }
 
           retorno += this.gerarDivisor(
-            `${indexGrupo === 0 ? '  |' : ''} ${termo} * ${numeroLinha} = ${
+            `${
+              indexGrupo === 0 ? '  |' : ''
+            } ${numeroLinha}${this.identarOperador(numeroLinha)}* ${termo} = ${
               termo * numeroLinha
             }`
           );
@@ -38,6 +40,10 @@ export class Tabuada extends VisualgBase implements IAlgoritimo {
         '  |___________________________________________________________|\n';
     }
     this.saidaDoDado = retorno;
+  }
+
+  identarOperador(numeroLinha: number): string {
+    return numeroLinha < 10 ? '  ' : ' ';
   }
 
   saidaDosDados() {
